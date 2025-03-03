@@ -11,4 +11,5 @@ cd -
 wget -O parabricks_sample.tar.gz https://s3.amazonaws.com/parabricks.sample/parabricks_sample.tar.gz
 tar xzvf parabricks_sample.tar.gz
 
-mv parabricks_sample/Ref data/ref
+mv parabricks_sample/Ref parabricks_sample/ref
+mv parabricks_sample/ref data

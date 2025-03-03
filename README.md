@@ -1,4 +1,4 @@
-# Germline Analysis Blueprint
+# Parabricks Introduction Notebook 
 
 Run `download_data.sh` to download the dataset locally. 
 

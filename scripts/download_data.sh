@@ -1,11 +1,18 @@
 #!/bin/bash 
 
-# Make the directory path to save the data 
-mkdir -p data/ref
-mkdir -p data/output
+# If the data directory already exists then exit 
+DATA_DIR="./data"
+if [ ! -d $DATA_DIR ]; then
+  echo "Data directory already exists, exiting."
+  exit
+fi
+
+# Make directories for data, references, and output 
+mkdir -p $DATA_DIR/ref
+mkdir -p $DATA_DIR/output
 
 # Download the exome files 
-cd data && \
+cd $DATA_DIR && \
     wget ftp://ftp-trace.ncbi.nih.gov/ReferenceSamples/giab/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/NIST7035_TAAGGCGA_L001_R1_001.fastq.gz && \
     wget ftp://ftp-trace.ncbi.nih.gov/ReferenceSamples/giab/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/NIST7035_TAAGGCGA_L001_R2_001.fastq.gz && \
     cd - 
@@ -16,7 +23,7 @@ tar xzvf parabricks_sample.tar.gz
 
 # We only need the reference files from this
 mv parabricks_sample/Ref parabricks_sample/ref
-mv parabricks_sample/ref data
+mv parabricks_sample/ref $DATA_DIR
 
 # Delete the leftover datafiles and tarball 
 rm -rf parabricks_sample*

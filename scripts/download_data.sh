@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 # If the data directory already exists then exit 
-DATA_DIR="../data"
+DATA_DIR="/root/germline-blueprint/data"
 if [ -d $DATA_DIR ]; then
   echo "Data directory already exists, exiting."
   exit

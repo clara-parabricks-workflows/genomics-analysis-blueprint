@@ -8,5 +8,4 @@ pbrun deepvariant \
     --ref ${REF} \
     --in-bam ${IN_BAM} \
     --out-variants ${OUT_VCF} \
-    --use-wes-model \
-    --run-parition 
+    --use-wes-model 

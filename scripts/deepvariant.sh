@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash 
+
 REF="data/ref/Homo_sapiens_assembly38.fasta"
 IN_BAM="data/NIST7035_TAAGGCGA_L001_R1_001.bam"
 OUT_VCF="data/NIST7035_TAAGGCGA_L001_R1_001.vcf"

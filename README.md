@@ -13,7 +13,7 @@ This repository contains notebooks to help anyone try an introductory analysis w
 
 Short-Read Analysis Workflow
 
-![layout architecture](./assets/pbworkflow.png)
+![layout architecture](./images/pbworkflow.png)
 
 
 # System Requirements

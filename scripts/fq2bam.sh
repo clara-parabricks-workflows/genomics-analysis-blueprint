@@ -12,4 +12,5 @@ pbrun fq2bam \
     --in-fq ${FASTQ_1} ${FASTQ_2} \
     --knownSites ${KNOWN_SITES} \
     --out-bam ${OUT_BAM} \
-    --out-recal-file ${OUT_RECAL}
+    --out-recal-file ${OUT_RECAL} \
+    --gpusort --gpuwrite 

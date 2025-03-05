@@ -15,11 +15,17 @@ Below is a diagram of this Short-Read Analysis Workflow:
 
 
 # System Requirements
-Users may have to wait 5-10 minutes for the instance to start depending on cloud availability. The L40s is recommended for the best combination of cost and performance. Users can also try L4 or T4 (better cost) or A100 (better performance).
 
-The fq2bam tool requires at least 38 GB of GPU memory by default; the --low-memory option will reduce this to 16 GB of GPU memory at the cost of slower processing. All other tools require at least 16 GB of GPU memory per GPU.
 
-This notebook requires an NVIDIA driver with version 525.60.13 or greater. Please check [here](https://docs.nvidia.com/deploy/cuda-compatibility/#forward-compatibility) for more details on forward compatibility. It also requires any Linux Operating System that supports nvidia-docker2 Docker version 20.10 (or higher)
+| Requirement | Notes |
+| -------- | ------- |
+| GPU  | We recommend L40S to balance cost and performance. A100 is more costly but more performance. L4 and T4 have lower performance but are cheaper. All tools require at least 16 GB of available GPU memory. For GPUs with 16-38 GB memory, the --low-memory flag is required. |
+| System RAM | At least 100 GB. |
+| CPU | At least 24 CPU threads. |
+| Driver | NVIDIA Driver version 525.60.13 or greater. See documentation about [forward compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/#forward-compatibility). |
+| OS | Any Linux OS that supports nvidia-docker2 and Docker version 20.10 or higher. |
+
+Users may have to wait 5-10 minutes for the instance to start depending on cloud availability. 
 
 # Notebooks
 

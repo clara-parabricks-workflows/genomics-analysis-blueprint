@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-REF="data/ref/Homo_sapiens_assembly38.fasta"
+REF="data/ref/hg19.p13.plusMT.no_alt_analysis_set.fa"
 INTERVAL_FILE="data/ref/nexterarapidcapture_expandedexome_targetedregions.bed"
 IN_BAM="data/output/NIST7035_TAAGGCGA_L001_R1_001.bam"
 OUT_VCF="data/output/NIST7035_TAAGGCGA_L001_R1_001.vcf"

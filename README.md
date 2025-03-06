@@ -39,5 +39,24 @@ Users may have to wait 5-10 minutes for the instance to start depending on cloud
 
 After a user is able to run this flow, they can try running this on their own data as well as explore cloud examples available at the end of the notebook.
 
+# Deployment 
+
+There are two ways to deploy this launchable depending on what level of customization is desired. 
+
+### 1. Using the Brev Launchable (Quick Start)
+
+To launch an instance with our recommended configuration, click here: [![ Click here to deploy the RAPIDS Singlecell Launchable.](https://brev-assets.s3.us-west-1.amazonaws.com/nv-lb-dark.svg)](https://www.google.com)  
+
+### 2. Manual configuration on Brev 
+
+1. Navigate to the [Brev homepage](console.brev.dev). 
+2. Open the **Launchables** tab at the top and click **Create Launchable**. 
+3. Under **Compute** select any GPU instance that meets the requirements outlined above. During testing, we used 1 L40S GPU with 256GB System RAM and 32 CPUs.
+4. Under **Container** we select **Container Mode** > **Custom Container** and enter `nvcr.io/nvidia/clara/clara-parabricks:4.4.0-1`. 
+5. For **Files** we use the path to this repository `https://github.com/clara-parabricks-workflows/parabricks-introduction-notebooks.git`
+6. For **Export Ports** we name the tunnel "Jupyter" and use port 8888. 
+7. Create a descriptive name for the launchable. The instance will take a few minutes to spin up. 
+8. Navigate to the notebook at `parabricks-introduction-notebookes/germline_wes.ipynb`. 
+
 # Terms of use
 By using this software or model, you are agreeing to the [NVIDIA Parabricks Terms of Use](https://docs.nvidia.com/clara/parabricks/latest/documentation/eula.html).

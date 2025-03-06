@@ -1,2 +1,4 @@
 data
 *.puml
+*.sh
+*.ipynb_checkpoints

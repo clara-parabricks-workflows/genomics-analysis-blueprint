@@ -7,7 +7,7 @@ The goal of this repository is to help users quickly try the fundamental capabil
 This workflow is useful for any bioinformatics scientist or developer who wants to try running Parabricks easily and quickly. If you like the speed and ease of use of Parabricks, you can check out the [latest Parabricks documentation and release information](https://docs.nvidia.com/clara/parabricks/latest/index.html).
 
 # Overview
-This repository contains a notebook to help anyone try an introductory analysis workflow leveraging Parabricks. We will focus on the accelerated germline workflow of fq2bam (Containing BWA-MEM, as well as GATK best practices for data processing and quality control) and [DeepVariant](https://github.com/google/deepvariant). A 30x whole genome can be run through fq2bam in as little as 6 minutes on an NVIDIA DGX system, compared to 4-9 hours on a CPU instance (m5.24xlarge, 96 x vCPU). In this example, users will run a whole exome in a matter of minutes.
+This repository contains a notebook to help anyone try an introductory analysis workflow leveraging Parabricks. We will focus on the accelerated germline workflow of fq2bam (Containing BWA-MEM, as well as [GATK](https://gatk.broadinstitute.org/) best practices for data processing and quality control) and [DeepVariant](https://github.com/google/deepvariant). A 30x whole genome can be run through fq2bam in as little as 6 minutes on an NVIDIA DGX system, compared to 4-9 hours on a CPU instance (m5.24xlarge, 96 x vCPU). In this example, users will run a whole exome in a matter of minutes.
 
 Below is a diagram of this Short-Read Analysis Workflow - fq2bam includes both alignment, processing and quality control.
 

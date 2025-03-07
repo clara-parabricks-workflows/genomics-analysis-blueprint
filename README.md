@@ -45,7 +45,7 @@ There are two ways to deploy this launchable depending on what level of customiz
 
 ### 1. Using the Brev Launchable (Quick Start)
 
-To launch an instance with our recommended configuration, click here: [![ Click here to deploy the RAPIDS Singlecell Launchable.](https://brev-assets.s3.us-west-1.amazonaws.com/nv-lb-dark.svg)](https://www.google.com)  
+To launch an instance with our recommended configuration, click here: [![ Click here to deploy the RAPIDS Singlecell Launchable.](https://brev-assets.s3.us-west-1.amazonaws.com/nv-lb-dark.svg)](https://nvda.ws/3QO1WeH)  
 
 ### 2. Manual configuration on Brev 
 

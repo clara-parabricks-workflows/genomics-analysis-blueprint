@@ -1,4 +1,4 @@
-# Parabricks Introduction Notebook 
+# Genomics Analysis Blueprint
 
 This repository houses the notebook made to try [Parabricks](https://docs.nvidia.com/clara/parabricks/latest/index.html), a GPU-accelerated software suite for secondary genomic analysis.
 

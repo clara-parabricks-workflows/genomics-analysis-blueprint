@@ -49,7 +49,7 @@ To launch an instance with our recommended configuration, click here: [![ Click 
 
 ### 2. Manual configuration on Brev 
 
-1. Navigate to the [Brev homepage](console.brev.dev). 
+1. Navigate to the [Brev homepage](https://developer.nvidia.com/brev) and select **Get Started**. 
 2. Open the **Launchables** tab at the top and click **Create Launchable**. 
 3. Under **Compute** select any GPU instance that meets the requirements outlined above. During testing, we used 1 L40S GPU with 256GB System RAM and 32 CPUs.
 4. Under **Container** we select **Container Mode** > **Custom Container** and enter `nvcr.io/nvidia/clara/clara-parabricks:4.4.0-1`. 

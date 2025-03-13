@@ -1,4 +1,4 @@
-# Contributing to Clara Parabricks Single Cell Analysis Blueprint
+# Contributing to Clara Parabricks Genomics Analysis Blueprint
 
 Contributions to this Genomics Analysis blueprint will fall into the following 2 categories.
 

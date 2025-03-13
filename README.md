@@ -11,7 +11,7 @@ This repository contains a notebook to help anyone try an introductory analysis 
 
 Below is a diagram of this Short-Read Analysis Workflow - fq2bam includes both alignment, processing and quality control.
 
-![layout architecture](./images/pbworkflow.png)
+![layout architecture](https://github.com/clara-parabricks-workflows/genomics-analysis-blueprint/blob/main/images/pbworkflow.png?raw=true)
 
 
 # System Requirements

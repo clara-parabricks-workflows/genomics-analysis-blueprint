@@ -20,7 +20,7 @@ Below is a diagram of this Short-Read Analysis Workflow - fq2bam includes both a
 | Requirement | Notes |
 | -------- | ------- |
 | GPU  | We recommend L40S to balance cost and performance.  <br> - Higher performance: A100 <br> - Better cost: L4 and T4 <br>|
-| GPU Memory | 38 GB is recommended. <br> - All tools require at least 16 GB of available GPU memory. <br> - For GPUs with 16-38 GB memory, the --low-memory flag is required. |
+| GPU Memory | 48 GB is recommended. <br> - All tools require at least 16 GB of available GPU memory. <br> - For GPUs with 16-48 GB memory, the --low-memory flag is required. |
 | System RAM | At least 100 GB. |
 | CPU | At least 24 CPU threads. |
 | Driver | NVIDIA Driver version 525.60.13 or greater. See documentation about [forward compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/#forward-compatibility). |

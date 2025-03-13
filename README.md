@@ -59,4 +59,4 @@ To launch an instance with our recommended configuration, click here: [![ Click 
 8. Navigate to the notebook at `genomics-analysis-blueprint/germline_wes.ipynb`. 
 
 # Terms of use
-By using this software or model, you are agreeing to the [NVIDIA Parabricks Terms of Use](https://docs.nvidia.com/clara/parabricks/latest/documentation/eula.html).
+**Governing Terms**: The Parabricks container is governed by the [NVIDIA Software License Agreement](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/) and the [Product-Specific Terms for NVIDIA AI Products](https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/). This Genomics Analysis Blueprint github repository is provided under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

@@ -3,7 +3,7 @@ name: Deploy and Test
 on:
   push:
     branches:
-      - main
+      - add-ci
   pull_request:
     branches:
       - main

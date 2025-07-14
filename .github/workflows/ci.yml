@@ -1,0 +1,128 @@
+name: Deploy and Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-genomics-analysis:
+    runs-on: arc-runners-org-clara-parabricks-workflows
+    env:
+      PYTHON_VERSION: 3.12
+      PARABRICKS_VERSION: 4.4.0-1
+    steps:  
+      - name: Checkout BP repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+      - name: Install dependencies
+        run: |
+          # Install wget for data download
+          sudo apt-get update
+          sudo apt-get install wget
+          
+          # Install Docker
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sudo sh get-docker.sh
+          
+          # Install jupyter nbconvert for HTML conversion (needed on host)
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert
+          
+          # Get System Info
+          echo "===================== System Info ====================="
+          more /etc/os-release
+          nvidia-smi || echo "nvidia-smi not available"
+          docker version
+
+      - name: Run Genomics Analysis Notebook in Parabricks Container
+        env:
+          NGC_API_KEY: ${{ secrets.NGC_API_KEY }}
+        run: |
+          NOTEBOOK_PATH="germline_wes.ipynb"
+          OUTPUT_NOTEBOOK="germline_wes_result.ipynb"
+          
+          # Login to NGC
+          echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
+          
+          # Run papermill inside the Parabricks container
+          docker run --rm --gpus all \
+            -v $(pwd):/workspace \
+            -w /workspace \
+            nvcr.io/nvidia/clara/clara-parabricks:${{ env.PARABRICKS_VERSION }} \
+            bash -c "
+              # Install system dependencies
+              apt-get update && apt-get install -y wget
+              
+              # Install papermill and jupyter kernel dependencies
+              pip install papermill jupyter ipykernel
+              
+              # Install python3 kernel
+              ipython kernel install --name 'python3' --user
+              
+              # Run the notebook
+              papermill '$NOTEBOOK_PATH' '$OUTPUT_NOTEBOOK' --log-output --log-level DEBUG
+              
+              # Check if papermill failed
+              if [ \$? -ne 0 ]; then
+                echo 'Notebook execution failed with exit code '\$?
+                exit 1
+              fi
+              
+              # Check if the output notebook was created
+              if [ ! -f '$OUTPUT_NOTEBOOK' ]; then
+                echo 'Error: Output notebook was not created'
+                exit 1
+              fi
+            "
+
+      - name: Convert result to html format
+        if: always()
+        run: |
+          OUTPUT_NOTEBOOK="germline_wes_result.ipynb"
+          if [ -f "$OUTPUT_NOTEBOOK" ]; then
+            jupyter nbconvert --to html "$OUTPUT_NOTEBOOK"
+          else
+            echo "Notebook output file not found, skipping conversion"
+          fi
+          
+      - name: Run Test Code
+        env:
+          TEST_DOCKER_PULL_KEY: ${{ secrets.TEST_DOCKER_PULL_KEY }}
+        run: |
+          echo "======================================="
+          echo "$TEST_DOCKER_PULL_KEY" | docker login nvcr.io --username '$oauthtoken' --password-stdin 
+          
+          # Check if the HTML file exists before running tests
+          if [ ! -f "./germline_wes_result.html" ]; then
+            echo "Error: germline_wes_result.html not found"
+            exit 1
+          fi
+          
+          # Run the test and capture the exit code
+          docker run \
+            -v ./germline_wes_result.html:/app/input/germline_wes.html \
+            -v "$(pwd):/workspace" \
+            nvcr.io/rw983xdqtcdp/auto_test_team/blueprint-github-test-image:latest \
+            pytest -m germline --disable-warnings --html=/workspace/genomics.html
+          
+
+      - name: Upload the result notebook as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result notebook and pytest
+          path: |
+             germline_wes_result.html
+             genomics.html
+          retention-days: 30 

@@ -25,19 +25,19 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           
-      - name: Install dependencies
+      - name: Get System Info
         run: |
-          # Install wget for data download
-          sudo apt-get update
-          sudo apt-get install wget
+          # # Install wget for data download
+          # sudo apt-get update
+          # sudo apt-get install wget
           
-          # Install Docker
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
+          # # Install Docker
+          # curl -fsSL https://get.docker.com -o get-docker.sh
+          # sudo sh get-docker.sh
           
-          # Install jupyter nbconvert for HTML conversion (needed on host)
-          python -m pip install --upgrade pip
-          pip install jupyter nbconvert
+          # # Install jupyter nbconvert for HTML conversion (needed on host)
+          # python -m pip install --upgrade pip
+          # pip install jupyter nbconvert
           
           # Get System Info
           echo "===================== System Info ====================="

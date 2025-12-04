@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   run-genomics-analysis:
-    runs-on: arc-runners-org-clara-parabricks-workflows
+    runs-on: arc-runners-org-clara-parabricks-2-gpu
     env:
       PYTHON_VERSION: 3.12
       PARABRICKS_VERSION: 4.4.0-1
